@@ -12,9 +12,6 @@ print ("Start guessing...")
 #creates an variable with an empty value
 guesses = ' '
 
-#determine the number of turns
-turns = len(word) - 1
-
 # make a counter that starts with zero
 failed = 0   
 
@@ -120,10 +117,14 @@ HANGMAN = (
 ----------
 """)
 
+turn = len(HANGMAN)
 
-while turns > 0  :    
+deneme = turn
+
+while wrong < turn :    
    
     failed=0 
+
     guess = input("guess a character:") 
     
     if guess not in guess_list:
@@ -155,16 +156,13 @@ while turns > 0  :
  
         print("WRONG! Try again!")
         print(HANGMAN[wrong]) 
-
-        turns -= 1        
+        
+        deneme = deneme - 1
+        
         wrong += 1
 
-        if turns == 0 or wrong == 8:          
+        print("You have " + str(deneme) + ' more guesses')
+
+if  wrong == len(HANGMAN):          
+    print ("UNLUCKY! You lose !")
     
-            print ("UNLUCKY! You lose !")
-            break
-
-        else:
-
-            print("You have " + str(turns) + ' more guesses')
-
